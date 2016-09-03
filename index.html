@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Introduccion a Node</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<img class ="not-border" src="img/nodejs.png" alt="">
+					<h2>Introduccion a Node Js</h2>
+					<p class="left"><a href="">Christian Tola</a></p>
+				</section>
+				<section>
+					<section>
+						<h3>¿Que es?</h3>
+						<p class="fragment" data-fragment-index="1">Node Js es un entorno javascript que funciona del lado del servidor</p>
+						<p class="fragment" data-fragment-index="2">Utiliza el motor V8 de Google diseñado para ejecutar codigo javascript de una forma extremadamente rápida</p>
+					</section>
+					<section>
+						<h3>¿Que es?</h3>
+						<p>Trabaja con un único hilo de ejecución</p>
+						<p class="fragment" data-fragment-index="1">Programación Asincrona Orientado a Eventos</p>
+					</section>
+					<section>
+						<h3>¿Quienes lo usan?</h3>
+						<img class="fragment" src="img/who_use.png" alt="">
+					</section>
+					<section>
+						<p><a href="https://strongloop.com/node-js/nodejs-infographic/">1. https://strongloop.com/node-js/nodejs-infographic/</a></p>
+						<p>2. How We Built eBay's First Node.js Application: <a href="http://www.ebaytechblog.com/2013/05/17/how-we-built-ebays-first-node-js-application/">http://www.ebaytechblog.com/2013/05/17/how-we-built-ebays-first-node-js-application/</a></p>
+						<p>3. Node Js at PayPal: <a href="https://www.paypal-engineering.com/2013/11/22/node-js-at-paypal/">https://www.paypal-engineering.com/2013/11/22/node-js-at-paypal/</a></p>
+					</section>
+					<section>
+						<p>HTML + CSS + JS + ¿¿??</p>
+						<img src="img/web.png" alt="">
+					</section>
+					<section>
+						<p>El entorno</p>
+						<img src="img/prog.jpg" alt="">
+					</section>
+					<section>
+						<img src="img/node.jpeg" alt="">
+					</section>
+					<section data-background="img/2.gif">
+						<p>¡¡Node Js en el lado del servidor!!</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>¿Como Empiezo?</h3>
+						<p>Instalacion</p>
+						<a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>
+						<img src="img/download.png" alt="">
+					</section>
+					<section>
+						<h3>Hello Drupal</h3>
+						<pre><code data-trim data-noescape>
+							const http = require('http');
+
+const hostname = '0.0.0.0';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello Drupal!');
+});
+
+server.listen(port, hostname, () => {
+    console.log(`Server Running at http://${hostname}:${port}/`);
+});
+						</code></pre>
+					</section>
+					<section>
+						<h3>Modulo OS</h3>
+						<pre>
+							<code data-trim data-noescape>
+const os = require('os');
+
+console.log( 'System: ' + os.platform() );
+console.log(os.arch());
+console.log( 'TotalMem: ' + os.totalmem()/1024 );
+console.log( 'FreeMem: ' + os.freemem()/1024 );
+
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Modulo File System</h3>
+						<pre><code data-trim data-noescape>
+const fs = require('fs');
+
+// Read a dir
+fs.readdir('./file-system', (err, files) => {
+	if (err) throw err;
+	var i = 0;
+	files.forEach((element) => {
+		console.log(element);
+		i++;
+	}, this);
+	console.log('Num Files: ' + i);
+});
+// Read a file 
+fs.readFile('./file-system/file1.txt', 'utf8', (err, data) => {
+	console.log(data);
+});
+
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Gestion de Dependencias</h3>
+						<img class="not-border-normal" src="img/npm.png" alt="">
+					</section>
+					<section>
+						<p>npm es un gestor de dependencias para nodejs</p>
+						<p>Podemos extender la funcionalidad de node</p>
+						<p><a href="https://www.npmjs.com/">https://www.npmjs.com/</a></p>
+					</section>
+					<section>
+						<p>Comandos Utiles</p>
+						<pre><code data-trim data-noescape>
+npm install -g bower //	instalar bower globalmente
+npm install --save express // instalar express en el proyecto
+npm install --save-dev morgan // instalar morgan como dependencia solo para desarrollo
+npm list // listar dependencias instaladas
+npm list -g // listar dependencias instaladas globalmente
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Express.js</h3>
+						<p>Web Framework para nodejs</p>
+						<pre><code data-trim data-noescape>
+							npm install express --save	
+						</code></pre>
+					</section>
+					<section>
+						<p>Hola Mundo con ExpressJs</p>
+						<pre><code data-trim data-noescape>
+const express = require('express');
+
+var app = express();
+
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+
+app.listen(3000, () => {
+    console.log('This app with express is loading in port 3000');
+});
+						</code></pre>
+					</section>
+					<section>
+						<p>Archivos Estaticos en nodejs</p>
+						<pre><code data-trim data-noescape>
+var express = require('express');
+
+var app = express();
+
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+    // res.render('index');
+    res.send('Hola Mundo');
+});
+
+app.listen(3000);
+						</code></pre>
+					</section>
+					<section>
+						<p>Templates</p>
+						<pre><code data-trim data-noescape>
+var express = require('express');
+
+var app = express();
+
+app.set('view engine', 'jade');
+app.get('/', (req, res) => {
+    res.render('index', {tit: 'Hola Drupaleros', saludo: 'este deberia ser un saludo..'});
+});
+app.listen(3000);
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>API Rest</h3>
+						<p class="fragment" data-fragment-index="1">Rest es un tipo de arquitectura de de desarrollo web que se apoya totalmente en el estándar HTTP</p>
+						<p class="fragment" data-fragment-index="2">REST  nos permite crear servicios y aplicaciones que pueden ser usadas por cualquier dispositivo o cliente que entienda HTTP</p>
+					</section>
+					<section>
+						<img src="img/rest.png" alt="">
+						<p class="fragment" data-fragment-index="1">Node + Express nos permite implementar servicios rest de manera sencilla</p>
+					</section>
+					<section>
+						<p>MEAN STACK (MongoDB + Express + Angular + Node)</p>
+						<img src="img/mean.png" alt="">
+					</section>
+					<section>
+						<p>Ejemplo</p>
+						<pre><code data-trim data-noescape>
+var router = require('express').Router()
+
+var Users = require('../models/user.js')
+//------ controllers
+router.get('/users', function (req, res) {
+  Users.find().then(function (result) {
+    res.send(result)
+  }).catch(function (err) {
+    console.log(err)
+  })
+});
+						</code></pre>
+					</section>
+					<section>
+						<p>Socket.io (Server)</p>
+						<pre><code data-trim data-noescape>
+module.exports = function (io) {
+    'use strict';
+    io.on('connection', function (socket) {
+        socket.on('message', function(from, msg) {
+            console.log('received message from', from, 'msg', JSON.stringify(msg));
+            console.log('broadcasting message');
+            console.log('payload is', msg);
+            io.sockets.emit('broadcast', {
+                payload: msg,
+                source: from
+            });
+            console.log('broadcast complete');
+        });
+    });
+}
+						</code></pre>
+					</section>
+					<section>
+						<p>Socket.io (Client)</p>
+						<pre><code data-trim data-noescape>
+$scope.$on('socket:broadcast', function (event, data) {
+	$log.debug('got a message', event.name);
+	if(!data.payload) {
+		$log.error('invalid message', 
+		'event', event, 
+		'data', JSON.stringify(data));
+		return;
+	}
+	$scope.$apply(function() {
+		$scope.messageLog = $scope.messageLog + 
+			messageFormatter(new Date(), data.source, data.payload);
+	});
+});
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<h3>Links</h3>
+					<p>Diapositiva</p>
+					<p>Codigo de ejemplo: <a href="https://github.com/cmtp/demos-nodejs">https://github.com/cmtp/demos-nodejs</a></p>
+				</section>
+				<section>
+					<p>Fin</p>
+					<img src="img/aplauso.gif" alt="">
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
